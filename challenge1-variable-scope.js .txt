@@ -1,0 +1,29 @@
+// ============================================
+// CHALLENGE 1: Variable Scope Exploration
+// ============================================
+// Goal: Understand how variable scope works with loops
+
+console.log("===== CHALLENGE 1: Variable Scope =====\n");
+
+// Declare the counter OUTSIDE the loop so it's accessible after
+let i;
+
+// Loop from 1 to 5
+for (i = 1; i <= 5; i++) {
+  console.log("Inside loop - i =", i);
+}
+
+// After the loop ends, i still exists and holds value 6
+console.log("\nAfter loop - final value of i =", i);
+
+// WHY is it 6?
+// Because the loop increments i to 6, then checks 6 <= 5 (false), and stops.
+
+// EXPERIMENT: What if we used 'let i' inside the for loop?
+// Uncomment the next 3 lines to see the error:
+/*
+for (let j = 1; j <= 3; j++) {
+  console.log("j =", j);
+}
+console.log(j); // ReferenceError: j is not defined
+*/
