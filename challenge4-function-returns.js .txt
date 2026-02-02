@@ -1,0 +1,52 @@
+// ============================================
+// CHALLENGE 4: Function Return Values Lab
+// ============================================
+// Goal: Build a calculator with chained functions
+
+console.log("===== CHALLENGE 4: Function Return Values =====\n");
+
+// Function 1: Calculate price with tax
+function calculateTax(price, taxRate) {
+  const taxAmount = price * taxRate;
+  const totalWithTax = price + taxAmount;
+  return totalWithTax;
+}
+
+// Function 2: Format number as dollar string
+function formatPrice(amount) {
+  // toFixed(2) rounds to 2 decimal places
+  return "$" + amount.toFixed(2);
+}
+
+// Function 3: Process complete order (uses both functions above)
+function processOrder(price, quantity, taxRate) {
+  // Step 1: Calculate subtotal
+  const subtotal = price * quantity;
+  
+  // Step 2: Add tax using calculateTax()
+  const totalWithTax = calculateTax(subtotal, taxRate);
+  
+  // Step 3: Format using formatPrice()
+  const formattedTotal = formatPrice(totalWithTax);
+  
+  // Step 4: Return the result
+  return formattedTotal;
+}
+
+// Test the calculator
+const orderTotal = processOrder(25.99, 3, 0.08);
+console.log("Your total is:", orderTotal);
+// Should show: "Your total is: $84.21"
+
+// EXPERIMENT: What if we forget the return statement?
+function noReturnExample(x) {
+  const result = x * 2;
+  // No return statement!
+}
+
+console.log("\nNo return test:", noReturnExample(5)); // undefined
+
+// WHAT I LEARNED:
+// - Functions must use 'return' to send values back
+// - Without return, functions return undefined
+// - We can chain functions by using one's output as another's input
