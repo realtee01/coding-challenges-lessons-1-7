@@ -1,0 +1,45 @@
+// ============================================
+// CHALLENGE 2: Logical Operators Challenge
+// ============================================
+// Goal: Build an age verification system with multiple conditions
+
+console.log("===== CHALLENGE 2: Age Verification System =====\n");
+
+function canEnterVenue(age, hasID, hasParentConsent) {
+  // Rule 1: Under 13 cannot enter at all
+  if (age < 13) {
+    return "DENIED - Must be at least 13 years old";
+  }
+  
+  // Rule 2: Age 18+ only needs valid ID
+  if (age >= 18) {
+    if (hasID) {
+      return "ALLOWED - Adult (18+) with valid ID";
+    } else {
+      return "DENIED - Adults must present a valid ID";
+    }
+  }
+  
+  // Rule 3: Age 13-17 needs BOTH ID and parent consent
+  // We know they're 13-17 because we already handled <13 and >=18
+  if (hasID && hasParentConsent) {
+    return "ALLOWED - Minor with valid ID and parent consent";
+  } else if (!hasID) {
+    return "DENIED - Minors need a valid ID";
+  } else {
+    return "DENIED - Minors need parent consent";
+  }
+}
+
+// Test all 6 required scenarios
+console.log("Test 1:", canEnterVenue(25, true, false));   // Adult with ID
+console.log("Test 2:", canEnterVenue(16, true, true));    // Teen with both
+console.log("Test 3:", canEnterVenue(16, true, false));   // Teen missing consent
+console.log("Test 4:", canEnterVenue(10, true, true));    // Too young
+console.log("Test 5:", canEnterVenue(20, false, false));  // Adult no ID
+console.log("Test 6:", canEnterVenue(15, false, true));   // Teen no ID
+
+// Bonus edge cases
+console.log("\nBonus Tests:");
+console.log("Test 7:", canEnterVenue(13, true, true));    // Lower boundary
+console.log("Test 8:", canEnterVenue(17, true, true));    // Upper boundary
