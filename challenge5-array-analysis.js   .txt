@@ -1,0 +1,57 @@
+// ============================================
+// CHALLENGE 5: Array Loop Analysis Challenge
+// ============================================
+// Goal: Analyze an array in ONE SINGLE LOOP
+
+console.log("===== CHALLENGE 5: Array Loop Analysis =====\n");
+
+const scores = [85, 45, 92, 67, 55, 78, 34, 88, 91, 50, 73, 62];
+
+// Initialize all variables BEFORE the loop
+let passingCount = 0;
+let failingCount = 0;
+let highest = scores[0];  // Start with first score, NOT 0
+let lowest = scores[0];   // Start with first score, NOT 100
+let sum = 0;
+
+// ONE LOOP to do everything
+for (let i = 0; i < scores.length; i++) {
+  const score = scores[i];
+  
+  // Count passing vs failing
+  if (score >= 60) {
+    passingCount++;
+  } else {
+    failingCount++;
+  }
+  
+  // Track highest score
+  if (score > highest) {
+    highest = score;
+  }
+  
+  // Track lowest score
+  if (score < lowest) {
+    lowest = score;
+  }
+  
+  // Add to sum for average calculation
+  sum += score;
+}
+
+// Calculate average after the loop
+const average = sum / scores.length;
+
+// Print all results
+console.log("Scores:  ", scores);
+console.log("Passing: ", passingCount);
+console.log("Failing: ", failingCount);
+console.log("Highest: ", highest);
+console.log("Lowest:  ", lowest);
+console.log("Average: ", average.toFixed(2));
+
+// WHAT I LEARNED:
+// - We can do multiple calculations in one loop (more efficient!)
+// - Initialize highest/lowest with first array element, not hardcoded values
+// - Use += to build up a sum
+// - Calculate average AFTER the loop finishes
