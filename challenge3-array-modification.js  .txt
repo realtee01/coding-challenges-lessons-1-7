@@ -1,0 +1,36 @@
+// ============================================
+// CHALLENGE 3: Array Modification Practice
+// ============================================
+// Goal: Learn what const allows with arrays
+
+console.log("===== CHALLENGE 3: Array Modification =====\n");
+
+// Create a const array with 3 items
+const shoppingCart = ["apple", "bread", "milk"];
+console.log("1. Initial cart:", shoppingCart);
+
+// Add 2 items using push()
+shoppingCart.push("eggs");
+shoppingCart.push("cheese");
+console.log("2. After adding eggs & cheese:", shoppingCart);
+
+// Remove the last item using pop()
+const removedItem = shoppingCart.pop();
+console.log("3. Removed item:", removedItem);
+console.log("   Cart after pop:", shoppingCart);
+
+// Change the first item to something else
+shoppingCart[0] = "orange";
+console.log("4. After changing first item:", shoppingCart);
+
+// Try to reassign the entire array - THIS WILL CAUSE AN ERROR!
+// Uncomment the next line to see the TypeError:
+// shoppingCart = ["new", "array"];
+// Error: Assignment to constant variable
+
+console.log("5. Final cart:", shoppingCart);
+
+// WHAT I LEARNED:
+// - const arrays CAN be modified (push, pop, change elements)
+// - const arrays CANNOT be reassigned to a new array
+// - const protects the variable binding, not the contents
